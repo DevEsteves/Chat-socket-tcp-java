@@ -1,6 +1,6 @@
-### Chat com socket tcp em Java
+### Chat with socket tcp in Java
 
-Atividade Prática desenvolvida em Java durante a matéria de 'Redes e Sistemas Distribuídos'
+Practical activity developed during the discipline 'Redes e Sistemas Distribuídos'
 
 ## Running locally
 
