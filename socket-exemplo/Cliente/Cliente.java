@@ -1,31 +1,30 @@
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
-public class Servidor {
+public class Cliente {
 
     public static void main(String[] args) {
         Socket soc = null;
-        ServerSocket socServidor = null;
         try {
-            socServidor = new ServerSocket(5001);
-            soc = socServidor.accept();
+            soc = new Socket("127.0.0.1", 5001);
             DataInputStream recebido = new DataInputStream(soc.getInputStream());
             DataOutputStream enviado = new DataOutputStream(soc.getOutputStream());
-            System.out.println("(cliente): " + recebido.readUTF());
-            enviado.writeUTF("O servidor recebeu sua mensagem.");
+
+            Scanner myObj = new Scanner(System.in);
+            System.out.println("Digite a mensagem");
+            System.out.println("(servidor): " + recebido.readUTF());
         } catch (IOException ex) {
-            System.err.println("Falha na conexão");
+            System.err.println("Falha ao inicializar o server");
         } finally {
             try {
+                System.out.println("Conexão encerrada");
                 soc.close();
-                socServidor.close();
             } catch (IOException e) {
                 System.err.println("Falha ao encerrar a conexão");
             }
         }
     }
-    
 }
